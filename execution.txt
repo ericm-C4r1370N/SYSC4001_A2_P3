@@ -1,0 +1,41 @@
+0, 1, switch to kernel mode
+1, 10, context saved
+11, 1, find vector 2 in memory position 0x0004
+12, 1, load address 0X0695 into the PC
+13, 2, Child process created (PID 1)
+13, 1, switch to kernel mode
+14, 10, context saved
+24, 1, find vector 3 in memory position 0x0006
+25, 1, load address 0X042B into the PC
+26, 2, EXEC successful, running program1
+27, 180, loading program into memory
+207, 30, CPU Burst
+237, 1, switch to kernel mode
+238, 10, context saved
+248, 1, find vector 2 in memory position 0x0004
+249, 1, load address 0X0695 into the PC
+250, 150, SYSCALL ISR executed
+400, 1, IRET
+401, 10, CPU Burst
+411, 1, Child terminated, returning to parent
+412, 1, switch to kernel mode
+413, 10, context saved
+423, 1, find vector 2 in memory position 0x0004
+424, 1, load address 0X0695 into the PC
+425, 2, Child process created (PID 2)
+425, 1, switch to kernel mode
+426, 10, context saved
+436, 1, find vector 3 in memory position 0x0006
+437, 1, load address 0X042B into the PC
+438, 2, EXEC successful, running program2
+439, 150, loading program into memory
+589, 20, CPU Burst
+609, 1, switch to kernel mode
+610, 10, context saved
+620, 1, find vector 1 in memory position 0x0002
+621, 1, load address 0X029C into the PC
+622, 100, END_IO ISR executed
+722, 1, IRET
+723, 15, CPU Burst
+738, 1, Child terminated, returning to parent
+739, 30, CPU Burst

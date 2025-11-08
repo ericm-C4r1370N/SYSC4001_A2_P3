@@ -1,0 +1,52 @@
+Init:
+FORK, 17
+IF_CHILD, 0
+EXEC program1, 16 
+IF_PARENT,0
+ENDIF, 0
+CPU, 205 
+
+Contents of program1:
+FORK, 15
+IF_CHILD, 0
+IF_PARENT, 0
+ENDIF, 0 
+EXEC program2, 33 
+
+Contents of program2:
+CPU, 53
+
+
+0, 1, switch to kernel mode
+1, 10, context saved
+11, 1, find vector 2 in memory position 0x0004
+12, 1, load address 0X0695 into the PC
+13, 2, Child process created (PID 1)
+13, 1, switch to kernel mode
+14, 10, context saved
+24, 1, find vector 3 in memory position 0x0006
+25, 1, load address 0X042B into the PC
+26, 2, EXEC successful, running program1
+27, 240, loading program into memory
+267, 1, switch to kernel mode
+268, 10, context saved
+278, 1, find vector 2 in memory position 0x0004
+279, 1, load address 0X0695 into the PC
+280, 2, Child process created (PID 2)
+280, 1, switch to kernel mode
+281, 10, context saved
+291, 1, find vector 3 in memory position 0x0006
+292, 1, load address 0X042B into the PC
+293, 2, EXEC successful, running program2
+294, 495, loading program into memory
+789, 53, CPU Burst
+842, 1, Child terminated, returning to parent
+843, 1, switch to kernel mode
+844, 10, context saved
+854, 1, find vector 3 in memory position 0x0006
+855, 1, load address 0X042B into the PC
+856, 2, EXEC successful, running program2
+857, 495, loading program into memory
+1352, 53, CPU Burst
+1405, 1, Child terminated, returning to parent
+1406, 205, CPU Burst

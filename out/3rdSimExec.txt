@@ -1,0 +1,41 @@
+Init:
+FORK, 20
+IF_CHILD, 0
+IF_PARENT, 0
+EXEC program1, 60
+ENDIF, 0
+CPU, 10
+
+Program 1:
+CPU, 50
+SYSCALL, 6
+CPU, 15
+END_IO, 6
+
+0, 1, switch to kernel mode
+1, 10, context saved
+11, 1, find vector 2 in memory position 0x0004
+12, 1, load address 0X0695 into the PC
+13, 2, Child process created (PID 1)
+13, 10, CPU Burst
+23, 1, Child terminated, returning to parent
+24, 1, switch to kernel mode
+25, 10, context saved
+35, 1, find vector 3 in memory position 0x0006
+36, 1, load address 0X042B into the PC
+37, 2, EXEC successful, running program1
+38, 240, loading program into memory
+278, 50, CPU Burst
+328, 1, switch to kernel mode
+329, 10, context saved
+339, 1, find vector 6 in memory position 0x000C
+340, 1, load address 0X0639 into the PC
+341, 265, SYSCALL ISR executed
+606, 1, IRET
+607, 15, CPU Burst
+622, 1, switch to kernel mode
+623, 10, context saved
+633, 1, find vector 6 in memory position 0x000C
+634, 1, load address 0X0639 into the PC
+635, 265, END_IO ISR executed
+900, 1, IRET
