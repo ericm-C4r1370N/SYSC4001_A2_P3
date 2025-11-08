@@ -7,6 +7,7 @@ Contents:
     device_table.txt: table of hardcoded IO times for corresponding device #'s
     vector_table.txt: table of memory addressses containing ISR locations for each IO device.
     external_files.txt: table of external files containing additional programs
+    program#N: where n is the program # of additional external programs
 
 Supported Platforms:
 
